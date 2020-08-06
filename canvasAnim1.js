@@ -193,8 +193,8 @@ function canvas() {
                     minTop -= delay;
                     maxTop += delay
                 }
-                if (titleFont < 15) { titleFont++; } else { titleFont = 15, parFont = 14 }
-                if (parFont < 14) { parFont++; } else { parFont = 14; }
+                if (titleFont < 14) { titleFont++; } else { titleFont = 14; }
+                if (parFont < 13) { parFont++; } else { parFont = 13; }
                 if (imgWidth > 0) { imgWidth -= 10; }
 
                 lineText += 0.015;
