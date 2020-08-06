@@ -157,9 +157,9 @@ function canvas() {
     //variable contains maximal pixels accordingly from top
     var maxTop = 196;
     //variable sets maximal size of titles
-    var titleFont = 15;
+    var titleFont = 13;
     //variable sets maximal size of paragraphs
-    var parFont = 14;
+    var parFont = 12;
     //variable sets maximal size of images
     var imgWidth = 150;
     var lineText = 0;
@@ -193,8 +193,8 @@ function canvas() {
                     minTop -= delay;
                     maxTop += delay
                 }
-                if (titleFont < 14) { titleFont++; } else { titleFont = 14; }
-                if (parFont < 13) { parFont++; } else { parFont = 13; }
+                if (titleFont < 13) { titleFont++; } else { titleFont = 13; }
+                if (parFont < 12) { parFont++; } else { parFont = 12; }
                 if (imgWidth > 0) { imgWidth -= 10; }
 
                 lineText += 0.015;
