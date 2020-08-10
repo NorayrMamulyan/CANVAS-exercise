@@ -3,8 +3,8 @@ function canvas() {
     var imitationBlock = document.getElementById("imitationBlock");
     var imitationBlock2 = document.getElementById("imitationBlock2");
     //maximal with and height of canvas
-    canvas.width = 663;
-    canvas.height = 663;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
 
@@ -44,82 +44,91 @@ function canvas() {
     function Container(dy) {
         //dy provides the duration of animation
         this.dy = dy;
-        //these are declared properties which have not value yet 
-        this.y = undefined;
-        this.y2 = undefined;
-        this.titeFont = undefined;
-        this.parFont = undefined;
-        this.imgWidth = undefined;
-        this.lineText = undefined;
 
         //first container
         this.containerOne = function() {
             //imitationBlock
-            imitationBlock.style.top = this.y + "px";
+            imitationBlock.style.top = this.y + transformScale_img + "px";
+            imitationBlock.style.width = 150 + transformScale_img + 'px';
+            imitationBlock.style.height = 278 + transformImage + transformPar + 'px';
+            imitationBlock.style.left = 10 + randomNum + 'px';
+
             //container carcase
-            ctx.roundRect(10, this.y, 150, 278, 5).stroke();
+            ctx.roundRect(10 + randomNum, this.y + transformScale_img, 150 + transformScale_img, 278 + transformImage + transformPar, 5).stroke();
 
             //image
             const image = document.getElementById('img');
-            ctx.drawImage(image, 10, this.y, this.imgWidth, 100);
+            ctx.drawImage(image, 10 + randomNum, this.y + transformScale_img, 150 + transformScale_img, this.imgHeight);
 
             //title
-            ctx.fillStyle = "black";
-            ctx.font = "bold " + this.titeFont + "px GHEAGrpalatReg";
-            ctx.fillText("Ծրագրավորողների", 14, 118 + this.y);
-            ctx.fillText("խումբ", 60, 133 + this.y);
+            if (click == 1) {
+                ctx.fillStyle = '#BF2604';
+            } else ctx.fillStyle = "black";
+            ctx.font = "bold " + 15 + "px GHEAGrpalatReg";
+            ctx.fillText("Ծրագրավորողների", 14 + randomNum + transformScale_img / 2, 118 + transformImage + transformScale_img + this.y);
+            ctx.fillText("խումբ", 60 + randomNum + transformScale_img / 2, 133 + transformScale_img + transformImage + this.y);
 
             //title-line
             ctx.beginPath();
-            ctx.moveTo(14, 138 + this.y);
-            ctx.lineTo(154, 138 + this.y);
+            ctx.moveTo(14 + randomNum, 138 + transformScale_img + transformImage + this.y);
+            ctx.lineTo(154 + randomNum + transformScale_img, 138 + transformScale_img + transformImage + this.y);
             ctx.stroke();
             //par
-            ctx.multiline(" Յուրաքանչյուր տեքստ/n պարունակում է/n բովանդակային/n պահանջ,որի/n սպառմանը ձգտելու/n արդյունքում այն/n ստեղծվել է/n հարաբերականորեն:", 13, 168 + this.y, "", this.parFont, "GHEAGrpalatReg", "gray", 14);
+            ctx.multiline(" Յուրաքանչյուր տեքստ/n պարունակում է/n բովանդակային/n պահանջ,որի/n սպառմանը ձգտելու/n արդյունքում այն/n ստեղծվել է/n հարաբերականորեն:", 13 + randomNum, 168 + transformScale_img + transformImage + this.y, "", this.parFont, "GHEAGrpalatReg", "gray", 14);
         }
 
         //second container
         this.containerTwo = function() {
             //imitationBlock2
             imitationBlock2.style.top = this.y2 + "px";
+            imitationBlock2.style.width = 150 + transformScale_img + 'px';
+            imitationBlock2.style.left = 400 + (randomNum * 2) + transformScale_img + 'px'
+            imitationBlock2.style.height = 278 + transformImage + transformPar + 'px';
             //container carcase
-            ctx.roundRect(400, this.y2, 150, 278, 5).stroke();
+            ctx.roundRect(400 + (randomNum * 2) + transformScale_img, this.y2, 150 + transformScale_img, 278 + transformImage + transformPar, 5).stroke();
 
             //image
             const image = document.getElementById('img');
-            ctx.drawImage(image, 400, this.y2, imgWidth, 100);
+            ctx.drawImage(image, 400 + (randomNum * 2) + transformScale_img, this.y2, 150 + transformScale_img, this.imgHeight);
 
             //title
-            ctx.fillStyle = "black";
-            ctx.font = "bold " + this.titeFont + "px GHEAGrpalatReg";
-            ctx.fillText("Ծրագրավորողների", 405, 118 + this.y2);
-            ctx.fillText("խումբ", 450, 133 + this.y2);
+            if (click == 1) {
+                ctx.fillStyle = '#BF2604';
+            } else ctx.fillStyle = "black";
+            ctx.font = "bold " + 15 + "px GHEAGrpalatReg";
+            ctx.fillText("Ծրագրավորողների", 405 + (randomNum * 2) + (transformScale_img + transformScale_img / 2), 118 + this.transformImage + this.y2);
+            ctx.fillText("խումբ", 450 + (randomNum * 2) + (transformScale_img + transformScale_img / 2), 133 + transformImage + this.y2);
 
             //title-line
             ctx.beginPath();
-            ctx.moveTo(405, 138 + this.y2);
-            ctx.lineTo(544, 138 + this.y2);
+            ctx.moveTo(405 + (randomNum * 2) + transformScale_img, 138 + transformImage + this.y2);
+            ctx.lineTo(544 + transformScale_img + (randomNum * 2) + transformScale_img, 138 + transformImage + this.y2);
             ctx.stroke();
             //par
-            ctx.multiline(" Յուրաքանչյուր տեքստ/n պարունակում է/n բովանդակային/n պահանջ,որի/n սպառմանը ձգտելու/n արդյունքում այն/n ստեղծվել է/n հարաբերականորեն:", 404, 168 + this.y2, "", this.parFont, "GHEAGrpalatReg", "gray", 14);
+            ctx.multiline(" Յուրաքանչյուր տեքստ/n պարունակում է/n բովանդակային/n պահանջ,որի/n սպառմանը ձգտելու/n արդյունքում այն/n ստեղծվել է/n հարաբերականորեն:", 404 + (randomNum * 2) + transformScale_img, 168 + transformImage + this.y2, "", this.parFont, "GHEAGrpalatReg", "gray", 14);
         }
 
         //line
-        this.line = function() {
-            ctx.beginPath();
-            ctx.moveTo(160, 138 + this.y);
-            ctx.lineTo(400, 134 + this.y2);
-            ctx.stroke();
 
+        this.line = function() {
+            var lineX1 = 160 + transformScale_img + randomNum,
+                lineX2 = 400 + transformScale_img + (randomNum * 2),
+                lineY1 = 138 + transformScale_img + (transformImage / 2) + (transformPar / 2) + this.y,
+                lineY2 = 134 + (transformImage / 2) + (transformPar / 2) + this.y2;
+            console.log();
+            ctx.beginPath();
+            ctx.moveTo(lineX1, lineY1);
+            ctx.lineTo(lineX2, lineY2);
+            ctx.stroke();
             ctx.save();
             ctx.font = "16px GHEAGrpalatReg";
 
-            // Matrix transformation to center of out text
-            ctx.translate(280, 247);
-            ctx.rotate(.6 + lineText);
-            ctx.translate(-280, -247);
+            // text rotation on the center
+            ctx.translate((lineX1 + lineX2) / 2, (lineY1 + lineY2) / 2);
+            ctx.rotate(Math.atan2(lineY2 - lineY1, lineX2 - lineX1));
+            ctx.translate((lineX1 + lineX2) / -2, (lineY1 + lineY2) / -2);
             ctx.fillStyle = "black";
-            ctx.fillText('Ուսուցում', 250, 247);
+            ctx.fillText('Ուսուցում', (lineX1 + lineX2) / 2 - 30, (lineY1 + lineY2) / 2 - 5);
             ctx.restore();
         }
 
@@ -129,10 +138,9 @@ function canvas() {
         this.update = function() {
             this.y = minTop;
             this.y2 = maxTop;
-            this.titeFont = titleFont;
             this.parFont = parFont;
-            this.imgWidth = imgWidth;
-            this.lineText = lineText;
+            this.imgHeight = imgHeight;
+            this.transformImage = transformImage;
             this.containerOne();
             this.containerTwo();
             this.line();
@@ -156,18 +164,21 @@ function canvas() {
     var minTop = 32;
     //variable contains maximal pixels accordingly from top
     var maxTop = 196;
-    //variable sets maximal size of titles
-    var titleFont = 13;
     //variable sets maximal size of paragraphs
-    var parFont = 12;
+    var parFont = 14;
     //variable sets maximal size of images
-    var imgWidth = 150;
-    var lineText = 0;
-
+    var imgHeight = 100;
+    //variable resets sizes of components
+    var transformImage = 0;
+    var transformPar = 0;
+    //transforming scales of components
+    var transformScale_img = 0;
+    var randomNum = 0;
     //function is being called when clicking on either block
     function animation() {
         var randomMax = Math.floor(Math.random() * 96) + 100;
-        var randomMin = Math.floor(Math.random() * 2) + 30;
+        var randomMin = Math.floor(Math.random() * 7) + 25;
+        randomNum = Math.floor(Math.random() * 20) + 20;
         if (click < 2) {
             click++;
         } else { click = 1; }
@@ -180,24 +191,49 @@ function canvas() {
                     minTop += delay;
                     maxTop -= delay;
                 }
-                if (titleFont > 0) { titleFont--; }
-                if (parFont > 0) { parFont--; }
-                if (imgWidth < 150) { imgWidth += 10; } else { imgWidth = 150 };
-                lineText -= 0.015;
+                if (parFont > 0) {
+                    parFont--;
+                    console.log(`transformPar: ${transformPar}`)
+                    if (transformPar > -120) {
+                        transformPar -= 10;
+
+                    } else transformPar = -120
+                }
+                if (imgHeight < 100) {
+                    imgHeight += 10;
+                    transformImage += 10;
+                } else {
+                    imgHeight = 100,
+                        transformImage = 0
+                };
+                if (transformScale_img < 98) {
+                    transformScale_img++;
+                } else transformScale_img = 0
             }
             //this is the condition for second click
             if (click == 2) {
                 if (minTop > randomMin && maxTop < randomMax) {
                     requestAnimationFrame(anim);
-                    titleFont++;
                     minTop -= delay;
                     maxTop += delay
                 }
-                if (titleFont < 13) { titleFont++; } else { titleFont = 13; }
-                if (parFont < 12) { parFont++; } else { parFont = 12; }
-                if (imgWidth > 0) { imgWidth -= 10; }
+                if (parFont < 13) {
+                    parFont++;
+                    console.log(`transformPar2: ${transformPar}`)
 
-                lineText += 0.015;
+                    transformPar++
+                } else {
+                    parFont = 14;
+                    transformPar = 0
+                }
+                if (imgHeight > 0) {
+                    imgHeight -= 10;
+                    transformImage -= 10;
+                }
+
+                if (transformScale_img > 0) {
+                    transformScale_img--;
+                }
             }
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             moveArray[click].update();
